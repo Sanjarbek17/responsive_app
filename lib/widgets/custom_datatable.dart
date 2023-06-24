@@ -29,7 +29,7 @@ class _CustomDataTableState extends State<CustomDataTable> {
 
   bool? currentSortAscending;
 
-  List<DataColumn> getColumns(List<String> columns) => columns.map((e) => DataColumn(label: Expanded(child: Text(e)), onSort: onSort)).toList();
+  List<DataColumn> getColumns(List<String> columns) => columns.map((e) => DataColumn(label: Expanded(child: Text(e, style: const TextStyle(fontWeight: FontWeight.bold))), onSort: onSort)).toList();
 
   List<DataRow> getRows(List<Map> rows) => rows.map((e) => DataRow(cells: getCells(e))).toList();
 
