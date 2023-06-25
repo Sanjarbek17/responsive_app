@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../data/datatable_data.dart';
-
 class CustomDataTable extends StatefulWidget {
+  final List<String> columnsList;
+  final List<Map> rowsList;
   const CustomDataTable({
     super.key,
+    required this.columnsList,
+    required this.rowsList,
   });
 
   @override
@@ -24,9 +26,9 @@ class _CustomDataTableState extends State<CustomDataTable> {
 
   void onSort(columnIndex, ascending) {
     if (ascending) {
-      rowsList.sort((rowA, rowB) => rowA.values.toList()[columnIndex].compareTo(rowB.values.toList()[columnIndex]));
+      widget.rowsList.sort((rowA, rowB) => rowA.values.toList()[columnIndex].compareTo(rowB.values.toList()[columnIndex]));
     } else {
-      rowsList.sort((rowA, rowB) => rowB.values.toList()[columnIndex].compareTo(rowA.values.toList()[columnIndex]));
+      widget.rowsList.sort((rowA, rowB) => rowB.values.toList()[columnIndex].compareTo(rowA.values.toList()[columnIndex]));
     }
 
     currentSortColumn = columnIndex;
@@ -46,10 +48,12 @@ class _CustomDataTableState extends State<CustomDataTable> {
           child: ConstrainedBox(
             constraints: BoxConstraints(minWidth: constraints.width),
             child: DataTable(
+              dataRowMinHeight: 30,
+              dataRowMaxHeight: 30,
               sortColumnIndex: currentSortColumn,
               sortAscending: currentSortAscending ?? true,
-              columns: getColumns(columnsList),
-              rows: getRows(rowsList),
+              columns: getColumns(widget.columnsList),
+              rows: getRows(widget.rowsList),
             ),
           ),
         ),

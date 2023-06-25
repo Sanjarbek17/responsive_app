@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import intl package
 import 'package:intl/intl.dart';
 
 class CustomContainer extends StatefulWidget {
@@ -35,38 +34,24 @@ class _CustomContainerState extends State<CustomContainer> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                widget.upTitle,
-                style: const TextStyle(fontSize: 10),
-              ),
-              Text(
-                !widget.iconButton ? widget.title : DateFormat('MM/dd/yyyy').format(date!).toString(),
-                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
+              Text(widget.upTitle, style: const TextStyle(fontSize: 10)),
+              Text(!widget.iconButton ? widget.title : DateFormat('MM/dd/yyyy').format(date!).toString(), style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             ],
           ),
           Visibility(
             visible: widget.iconButton,
             replacement: const SizedBox(height: 40, width: 40),
             child: IconButton(
-                iconSize: 20,
-                padding: EdgeInsets.zero,
-                style: const ButtonStyle(
-                    // minimumSize: MaterialStatePropertyAll(Size(20, 20)),
-                    // padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                    ),
-                onPressed: () async {
-                  DateTime? selected = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime(2023),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2054),
-                  );
-                  setState(() {
-                    date = selected ?? date;
-                  });
-                },
-                icon: const Icon(Icons.calendar_month)),
+              iconSize: 20,
+              padding: EdgeInsets.zero,
+              onPressed: () async {
+                DateTime? selected = await showDatePicker(context: context, initialDate: DateTime(2023), firstDate: DateTime(2000), lastDate: DateTime(2054));
+                setState(() {
+                  date = selected ?? date;
+                });
+              },
+              icon: const Icon(Icons.calendar_month),
+            ),
           )
         ],
       ),

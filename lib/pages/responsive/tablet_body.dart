@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_app/data/client_data.dart';
 
 import '../../widgets/custom_container.dart';
 import '../../widgets/custom_datatable.dart';
@@ -21,7 +22,11 @@ class _TabletBodyState extends State<TabletBody> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          const Icon(Icons.filter_alt_outlined, color: Colors.green),
+          InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/responsive2');
+              },
+              child: const Icon(Icons.filter_alt_outlined, color: Colors.green)),
           DropdownButton(
             value: currentValue,
             items: const [
@@ -67,7 +72,7 @@ class _TabletBodyState extends State<TabletBody> {
               TextButton(onPressed: () {}, child: const Text('BEKOR QILISH', style: TextStyle(color: Colors.black))),
             ],
           ),
-          const CustomDataTable()
+          CustomDataTable(columnsList: columnsList, rowsList: rowsList)
         ],
       ),
     );

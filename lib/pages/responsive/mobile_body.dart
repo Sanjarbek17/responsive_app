@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_app/data/client_data.dart';
 import 'package:responsive_app/widgets/custom_datatable.dart';
 
 import '../../widgets/custom_container.dart';
@@ -21,7 +22,11 @@ class _MobileBodyState extends State<MobileBody> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          const Icon(Icons.filter_alt_outlined, color: Colors.green),
+          InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed( '/responsive2');
+              },
+              child: const Icon(Icons.filter_alt_outlined, color: Colors.green)),
           DropdownButton(
             value: currentValue,
             items: const [
@@ -85,7 +90,10 @@ class _MobileBodyState extends State<MobileBody> {
               ),
             ],
           ),
-          const CustomDataTable(),
+          CustomDataTable(
+            columnsList: columnsList,
+            rowsList: rowsList,
+          ),
         ],
       ),
     );
