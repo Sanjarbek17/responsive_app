@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_container.dart';
-import '../widgets/custom_datatable.dart';
+import '../../widgets/custom_container.dart';
+import '../../widgets/custom_datatable.dart';
 
 class TabletBody extends StatefulWidget {
   const TabletBody({super.key});

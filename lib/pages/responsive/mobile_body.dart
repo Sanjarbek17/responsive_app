@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_app/widgets/custom_datatable.dart';
 
-import '../widgets/custom_container.dart';
+import '../../widgets/custom_container.dart';
 
 class MobileBody extends StatefulWidget {
   const MobileBody({super.key});
